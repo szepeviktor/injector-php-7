@@ -193,7 +193,8 @@ class TestClassWithNoCtorTypehints
 
 class TestMultiDepsWithCtor
 {
-    public mixed $testDep;
+    /** @var mixed $testDep */
+    public $testDep;
 
     public function __construct(TestDependency $val1, TestNeedsDep $val2)
     {

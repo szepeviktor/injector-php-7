@@ -4,7 +4,13 @@ namespace Amp\Injector;
 
 interface ReflectionCache
 {
-    public function fetch(string $key): mixed;
+    /**
+     * @return mixed
+     */
+    public function fetch(string $key);
 
-    public function store(string $key, mixed $data): void;
+    /**
+     * @param mixed $data
+     */
+    public function store(string $key, $data): void;
 }

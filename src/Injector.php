@@ -85,7 +85,7 @@ final class Injector
      *
      * @return self
      */
-    public function defineParam(string $paramName, mixed $value): self
+    public function defineParam(string $paramName, $value): self
     {
         $this->paramDefinitions[$paramName] = $value;
 
@@ -136,12 +136,11 @@ final class Injector
     /**
      * Share the specified class/instance across the Injector context.
      *
-     * @param mixed $nameOrInstance The class or object to share
-     *
+     * @param object|class-string $nameOrInstance The class or object to share
      * @return self
      * @throws ConfigException if $nameOrInstance is not a string or an object
      */
-    public function share(string|object $nameOrInstance): self
+    public function share($nameOrInstance): self
     {
         if (\is_string($nameOrInstance)) {
             $this->shareClass($nameOrInstance);
@@ -165,7 +164,7 @@ final class Injector
      * @throws InjectionException if $callableOrMethodStr is not a callable.
      *                            See https://github.com/amphp/injector#injecting-for-execution
      */
-    public function prepare(string $name, mixed $callableOrMethodStr): self
+    public function prepare(string $name, $callableOrMethodStr): self
     {
         if ($this->isExecutable($callableOrMethodStr) === false) {
             throw InjectionException::fromInvalidCallable(
@@ -189,7 +188,7 @@ final class Injector
      * @return self
      * @throws ConfigException if $callableOrMethodStr is not a callable.
      */
-    public function delegate(string $name, mixed $callableOrMethodStr): self
+    public function delegate(string $name, $callableOrMethodStr): self
     {
         if (!$this->isExecutable($callableOrMethodStr)) {
             $errorDetail = '';
@@ -261,7 +260,7 @@ final class Injector
      * @return mixed
      * @throws InjectionException if a cyclic gets detected when provisioning
      */
-    public function make(string $name, array $args = []): mixed
+    public function make(string $name, array $args = [])
     {
         [$className, $normalizedClass] = $this->resolveAlias($name);
 
@@ -326,7 +325,7 @@ final class Injector
      * @return mixed Returns the invocation result returned from calling the generated executable
      * @throws InjectionException
      */
-    public function execute(mixed $callableOrMethodStr, array $arguments = []): mixed
+    public function execute($callableOrMethodStr, array $arguments = [])
     {
         [$callable, $object] = $this->buildExecutableStruct($callableOrMethodStr);
 
@@ -349,7 +348,7 @@ final class Injector
      * @return Executable
      * @throws InjectionException
      */
-    public function buildExecutable(mixed $callableOrMethodStr): Executable
+    public function buildExecutable($callableOrMethodStr): Executable
     {
         try {
             [$reflectionCallable, $object] = $this->buildExecutableStruct($callableOrMethodStr);
@@ -369,7 +368,10 @@ final class Injector
         return \strtolower(\ltrim($className, '\\?'));
     }
 
-    private function shareClass(string|object $nameOrInstance): void
+    /**
+     * @param object|class-string $nameOrInstance
+     */
+    private function shareClass($nameOrInstance): void
     {
         [, $normalizedName] = $this->resolveAlias($nameOrInstance);
         $this->shares[$normalizedName] = $this->shares[$normalizedName] ?? null;
@@ -409,7 +411,10 @@ final class Injector
         $this->shares[$normalizedName] = $instance;
     }
 
-    private function isExecutable(mixed $callable): bool
+    /**
+     * @param mixed $callable
+     */
+    private function isExecutable($callable): bool
     {
         if (\is_callable($callable)) {
             return true;

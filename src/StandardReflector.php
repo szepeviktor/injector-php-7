@@ -38,7 +38,10 @@ class StandardReflector implements Reflector
         return new \ReflectionFunction($functionName);
     }
 
-    public function getMethod(object|string $classNameOrInstance, string $methodName): \ReflectionMethod
+    /**
+     * @param object|class-string $classNameOrInstance
+     */
+    public function getMethod($classNameOrInstance, string $methodName): \ReflectionMethod
     {
         $className = \is_string($classNameOrInstance) ? $classNameOrInstance : \get_class($classNameOrInstance);
 

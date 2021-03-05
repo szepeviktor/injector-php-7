@@ -6,12 +6,19 @@ class ReflectionCacheArray implements ReflectionCache
 {
     private array $cache = [];
 
-    public function fetch(string $key): mixed
+
+    /**
+     * @return mixed
+     */
+    public function fetch(string $key)
     {
         return \array_key_exists($key, $this->cache) ? $this->cache[$key] : false;
     }
 
-    public function store(string $key, mixed $data): void
+    /**
+     * @param mixed $data
+     */
+    public function store(string $key, $data): void
     {
         $this->cache[$key] = $data;
     }

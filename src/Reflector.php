@@ -59,10 +59,10 @@ interface Reflector
     /**
      * Retrieves and caches a reflection for the specified class method.
      *
-     * @param mixed  $classNameOrInstance
+     * @param object|class-string $classNameOrInstance
      * @param string $methodName
      *
      * @return \ReflectionMethod
      */
-    public function getMethod(object|string $classNameOrInstance, string $methodName): \ReflectionMethod;
+    public function getMethod($classNameOrInstance, string $methodName): \ReflectionMethod;
 }

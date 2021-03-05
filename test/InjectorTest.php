@@ -1237,7 +1237,7 @@ class InjectorTest extends TestCase
 
         try {
             $injector->make(ThrowsExceptionInConstructor::class);
-        } catch (\Exception) {
+        } catch (\Exception $exception) {
             // ignore
         }
 
