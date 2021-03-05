@@ -1,12 +1,12 @@
 {
-    "name": "amphp/injector",
-    "homepage": "https://github.com/amphp/injector",
+    "name": "szepeviktor/injector-php-7",
     "description": "A dependency injector for bootstrapping object-oriented PHP applications.",
     "keywords": [
         "dependency injection",
         "dic",
         "ioc"
     ],
+    "homepage": "https://github.com/amphp/injector",
     "license": "MIT",
     "authors": [
         {
@@ -29,6 +29,19 @@
             "email": "me@kelunik.com"
         }
     ],
+    "require": {
+        "php": "^7.4"
+    },
+    "require-dev": {
+        "amphp/php-cs-fixer-config": "dev-master",
+        "phpbench/phpbench": "1.0.0-alpha6",
+        "phpunit/phpunit": "^9.5.2"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.x-dev"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Amp\\Injector\\": "src"
@@ -42,18 +55,5 @@
         "files": [
             "test/fixtures.php"
         ]
-    },
-    "require": {
-        "php": ">=8.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9.5.2",
-        "amphp/php-cs-fixer-config": "dev-master",
-        "phpbench/phpbench": "1.0.0-alpha6"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.x-dev"
-        }
     }
 }
