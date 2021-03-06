@@ -60,7 +60,10 @@ final class Executable
         }
     }
 
-    private function invokeClosureCompat(array $args): mixed
+    /**
+     * @return mixed
+     */
+    private function invokeClosureCompat(array $args)
     {
         $scope = $this->callable->getClosureScopeClass();
         $closure = \Closure::bind(
