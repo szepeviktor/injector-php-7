@@ -92,9 +92,10 @@ class InjectorTest extends TestCase
         $injector = new Injector;
 
         $this->expectException(InjectionException::class);
-        $this->expectExceptionMessage(PHP_MAJOR_VERSION === 7
-            ? 'Could not make ClassThatDoesntExist: Class ClassThatDoesntExist does not exist'
-            : 'Could not make ClassThatDoesntExist: Class "ClassThatDoesntExist" does not exist'
+        $this->expectExceptionMessage(
+            PHP_MAJOR_VERSION === 7
+                ? 'Could not make ClassThatDoesntExist: Class ClassThatDoesntExist does not exist'
+                : 'Could not make ClassThatDoesntExist: Class "ClassThatDoesntExist" does not exist'
         );
 
         $injector->make('ClassThatDoesntExist');
@@ -616,9 +617,10 @@ class InjectorTest extends TestCase
         $injector = new Injector;
 
         $this->expectException(InjectorException::class);
-        $this->expectExceptionMessage(PHP_MAJOR_VERSION === 7
-            ? 'Could not make Amp\Injector\TypoInTypehint: Class Amp\Injector\TypoInTypehint does not exist'
-            : 'Could not make Amp\Injector\TypoInTypehint: Class "Amp\Injector\TypoInTypehint" does not exist'
+        $this->expectExceptionMessage(
+            PHP_MAJOR_VERSION === 7
+                ? 'Could not make Amp\Injector\TypoInTypehint: Class Amp\Injector\TypoInTypehint does not exist'
+                : 'Could not make Amp\Injector\TypoInTypehint: Class "Amp\Injector\TypoInTypehint" does not exist'
         );
 
         $injector->make(TestMissingDependency::class);
