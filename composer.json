@@ -34,6 +34,7 @@
     },
     "require-dev": {
         "amphp/php-cs-fixer-config": "dev-master",
+        "ocramius/proxy-manager": "^2.11.1",
         "phpbench/phpbench": "1.0.0-alpha6",
         "phpunit/phpunit": "^9.5.2"
     },
