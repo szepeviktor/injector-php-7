@@ -23,7 +23,10 @@ final class ReflectionCacheApc implements ReflectionCache
         return $this;
     }
 
-    public function fetch(string $key): mixed
+    /**
+     * @return mixed
+     */
+    public function fetch(string $key)
     {
         $localData = $this->localCache->fetch($key);
 
@@ -37,7 +40,10 @@ final class ReflectionCacheApc implements ReflectionCache
         return $success ? $data : false;
     }
 
-    public function store(string $key, mixed $data): void
+    /**
+     * @param mixed $data
+     */
+    public function store(string $key, $data): void
     {
         $this->localCache->store($key, $data);
 
